@@ -42,12 +42,12 @@ namespace shared_model {
        */
       iroha::expected::Result<T, std::string> build(
           typename T::TransportType transport) {
-        auto answer = stateless_validator_.validate(
-            detail::makePolymorphic<T>(transport));
+        auto answer = stateless_validator_.validate(transport);
         if (answer.hasErrors()) {
           return iroha::expected::makeError(answer.reason());
         }
-        return iroha::expected::makeValue(T(std::move(transport)));
+        return iroha::expected::makeValue(
+            T(std::forward<decltype(transport)>(transport)));
       }
 
      private:
