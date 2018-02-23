@@ -35,6 +35,8 @@ namespace shared_model {
     class CommandValidatorVisitor
         : public boost::static_visitor<ReasonsGroupType> {
      public:
+      CommandValidatorVisitor() = default;
+
       ReasonsGroupType operator()(
           const interface::AddAssetQuantity &aaq) const {
         ReasonsGroupType reason;

@@ -26,7 +26,6 @@ namespace shared_model {
 
     template <typename ModelValidator, typename Model, typename FieldValidator>
     class SignableModelValidator : public ModelValidator {
-      // using ModelValidator::ModelValidator;
      public:
       Answer validate(const Model &model) const {
         auto answer = ModelValidator::validate(model);
